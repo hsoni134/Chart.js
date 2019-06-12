@@ -1,0 +1,61 @@
+<HTML><HEAD><script src="/Chart.js"></script></HEAD>
+<BODY>
+<table style="width:100%"><TR><TD style="width:50%">
+<div>
+<canvas id="myChart"></canvas>
+</div></TD><TD style="width:50%">
+<div>
+<canvas id="myChart1"></canvas>
+</div></TD></TR></table>
+<script>
+let myChart=document.getElementById('myChart').getContext('2d');
+let myChart1=document.getElementById('myChart1').getContext('2d');
+let masPopChart = new Chart(myChart,{
+type:'polarArea',
+data:{
+	labels:['Passed','Failed'],
+	datasets:[{
+	label:'Test Result',
+	data:[
+		100,
+		50
+	     ],
+	backgroundColor:[
+	'rgb(75, 192, 192,0.5)',
+	'rgb(255, 99, 132,0.5)'
+	]
+	
+	         }]
+	},
+	options:{title:{display:true,text:'Test Result Overview'}}
+	});
+let anotherChart = new Chart(myChart1,{
+type:'bar',
+data:{
+	datasets:[{
+	label:'Actual Rows',
+	data:[
+		5
+	     ],
+	backgroundColor:[
+	'rgb(75, 192, 192,0.5)',
+	]},
+	{
+	label:'Expected Rows',
+	data:[4],
+	backgroundColor:[
+	'rgb(255, 99, 132,0.5)'
+	]
+	
+	         }]
+	},
+	options:{title:{display:true,text:'Actual Rows vs Expected Rows'}}
+	});
+Chart.scaleService.updateScaleDefaults('linear', {
+    ticks: {
+        min: 0
+    }
+});
+</script>
+</body>
+</html>
